@@ -1,0 +1,37 @@
+ /*-----------------------------------------------------------------------------------------
+ LIBRARY: LPRES_EXAMPLES_2
+ COMPONENT: F1
+ PARTITION: OffDesign
+ EXPERIMENT: exp1
+ TEMPLATE: STEADY
+ CREATION DATE: 20/02/2019
+-----------------------------------------------------------------------------------------*/
+
+EXPERIMENT exp1 ON F1.OffDesign
+   DECLS
+   OBJECTS
+   INIT
+      -- initial values for algebraics
+      NewGasGen_1.W_F = 65.3474576
+      CC.p_out_ch = 85430.3414
+      ThrustMonitor.M_out = 3.27
+
+   BOUNDS
+      -- Set equations for boundaries: boundVar = f(TIME;...)
+      LPRES.Altitude = 30000
+
+   BODY
+      -- report results in file reportAll.rpt
+      REPORT_LIST("reportAll","*",TRUE)
+
+      DEBUG_LEVEL= 3      -- Range 0..4
+      -- Settings for different actions. Valid actions are: SEV_DISABLE, SEV_NONE, SEV_WARNING, SEV_ERROR, SEV_KILLPOINT and SEV_FATALL
+      --eSetErrorAction(ERR_BAD_OPER,SEV_KILLPOINT) -- Detect bad numerical operations (eg division by zero), default is SEV_NONE, recommended is SEV_KILLPOINT
+      --eSetErrorAction(ERR_NAN_INF, SEV_KILLPOINT) -- Detect NaN or Inf values, default is SEV_NONE, recommended is SEV_KILLPOINT
+      TOLTYPE= RELTOL -- convergence criteria
+      TOLERANCE = 1e-06 -- steady solver relative tolerance 
+		RESTORE_STATE("C:\PROOSIS_3.8.1\LPRES_devel\WORKSPACE\LPRES_EXAMPLES_2\experiments\+f1.+design\exp1\Design.xml")
+      -- Call the steady state function
+      STEADY()
+
+END EXPERIMENT

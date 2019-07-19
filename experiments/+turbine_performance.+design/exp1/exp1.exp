@@ -1,0 +1,84 @@
+ /*-----------------------------------------------------------------------------------------
+ LIBRARY: LPRES_EXAMPLES_2
+ COMPONENT: Turbine_performance
+ PARTITION: Design
+ EXPERIMENT: exp1
+ TEMPLATE: STEADY
+ CREATION DATE: 07/02/2019
+-----------------------------------------------------------------------------------------*/
+
+EXPERIMENT exp1 ON Turbine_performance.Design
+   DECLS
+   OBJECTS
+   INIT
+      -- initial values for algebraics
+
+   BOUNDS
+      -- Set equations for boundaries: boundVar = f(TIME;...)
+      Inlet_1.Tt = 288.15
+      Inlet_1.pt = 101325
+      LPRES.Altitude = 0
+      Turbine_1.M_2 = 0.8
+      Turbine_1.m.Power = 1940000
+      Turbine_1.pi = 1.43
+      Turbine_1.rpm = 61600
+
+   BODY
+      -- report results in file reportAll.rpt
+      REPORT_LIST("reportAll","*",TRUE)
+
+      DEBUG_LEVEL= 1      -- Range 0..4
+      -- Settings for different actions. Valid actions are: SEV_DISABLE, SEV_NONE, SEV_WARNING, SEV_ERROR, SEV_KILLPOINT and SEV_FATALL
+      --eSetErrorAction(ERR_BAD_OPER,SEV_KILLPOINT) -- Detect bad numerical operations (eg division by zero), default is SEV_NONE, recommended is SEV_KILLPOINT
+      --eSetErrorAction(ERR_NAN_INF, SEV_KILLPOINT) -- Detect NaN or Inf values, default is SEV_NONE, recommended is SEV_KILLPOINT
+      TOLTYPE= RELTOL -- convergence criteria
+      TOLERANCE = 1e-06 -- steady solver relative tolerance 
+
+      DEBUG_LEVEL= 3
+      TOLERANCE = 1e-006
+      STEADY()
+		
+		PRINT(" ")
+		PRINT("-----------------------------------------------------------------")
+		PRINT(" ")
+		PRINT("	RESULTS (Turbine_1.M = 0.8):")
+		PRINT(" ")
+		PRINT("	Discharge area = $Nozzle_1.A")		
+		PRINT("	Turbine average radius = $Turbine_1.r_m")		
+		PRINT("	Turbine input area = $Turbine_1.A_in")		
+		PRINT("	Mass flow = $Turbine_1.f_in.W")
+		PRINT("	Turbine phi = $Turbine_1.phi")		
+		PRINT("	Turbine psi = $Turbine_1.psi")
+		PRINT(" ")
+		
+		SAVE_STATE("Design.xml")
+		
+		Turbine_1.M_2 = 1
+      STEADY()
+		
+		PRINT(" ")
+		PRINT("-----------------------------------------------------------------")
+		PRINT(" ")
+		PRINT("	RESULTS (Turbine_1.M = 1):")
+		PRINT(" ")
+		PRINT("	Discharge area = $Nozzle_1.A")		
+		PRINT("	Turbine average radius = $Turbine_1.r_m")		
+		PRINT("	Turbine input area = $Turbine_1.A_in")		
+		PRINT("	Mass flow = $Turbine_1.f_in.W")
+		PRINT(" ")
+		
+		Turbine_1.M_2 = 1.5
+      STEADY()
+		
+		PRINT(" ")
+		PRINT("-----------------------------------------------------------------")
+		PRINT(" ")
+		PRINT("	RESULTS (Turbine_1.M = 1.5):")
+		PRINT(" ")
+		PRINT("	Discharge area = $Nozzle_1.A")		
+		PRINT("	Turbine average radius = $Turbine_1.r_m")		
+		PRINT("	Turbine input area = $Turbine_1.A_in")		
+		PRINT("	Mass flow = $Turbine_1.f_in.W")
+		PRINT(" ")
+
+END EXPERIMENT

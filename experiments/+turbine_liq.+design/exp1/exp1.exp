@@ -1,0 +1,46 @@
+ /*-----------------------------------------------------------------------------------------
+ LIBRARY: LPRES_EXAMPLES_2
+ COMPONENT: Turbine_liq
+ PARTITION: Design
+ EXPERIMENT: exp1
+ TEMPLATE: STEADY
+ CREATION DATE: 07/02/2019
+-----------------------------------------------------------------------------------------*/
+
+EXPERIMENT exp1 ON Turbine_liq.Design
+   DECLS
+   OBJECTS
+   INIT
+      -- initial values for algebraics
+      Ambient.A = 0.01
+
+   BOUNDS
+      -- Set equations for boundaries: boundVar = f(TIME;...)
+      Ambient.l.W = 50
+      Inlet_1.Tt = 80
+      Inlet_1.pt = 3e5
+      Inlet_2.Tt = 80
+      Inlet_2.pt = 20000000
+      LPRES.Altitude = 0
+      Pump.dp = 5e6
+      Pump.f_out.W = 100
+      Pump.phi = 0.05
+      Shaft.rpm = 30000
+		Turbine_liq.phi = 0.05
+
+   BODY
+      -- report results in file reportAll.rpt
+      REPORT_LIST("reportAll","*",TRUE)
+
+      DEBUG_LEVEL= 3      -- Range 0..4
+      -- Settings for different actions. Valid actions are: SEV_DISABLE, SEV_NONE, SEV_WARNING, SEV_ERROR, SEV_KILLPOINT and SEV_FATALL
+      --eSetErrorAction(ERR_BAD_OPER,SEV_KILLPOINT) -- Detect bad numerical operations (eg division by zero), default is SEV_NONE, recommended is SEV_KILLPOINT
+      --eSetErrorAction(ERR_NAN_INF, SEV_KILLPOINT) -- Detect NaN or Inf values, default is SEV_NONE, recommended is SEV_KILLPOINT
+      TOLTYPE= ABSTOL -- convergence criteria
+      TOLERANCE = 1e-06 -- steady solver relative tolerance 
+		
+      -- Call the steady state function
+      STEADY()
+		SAVE_STATE("Design.xml")
+
+END EXPERIMENT

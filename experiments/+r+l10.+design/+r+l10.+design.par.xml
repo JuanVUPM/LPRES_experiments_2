@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<partitionInfo version="1.0" library="LPRES_EXAMPLES_2" component="RL10" partition="Design">
+<noDerivatives value="FALSE"/>
+<inhibitReductionConstantCoefEqts value="FALSE"/>
+<generatePartitionClass value="FALSE"/>
+<removeNotUsedVars value="FALSE"/>
+<showPropertyPanel value="FALSE"/>
+<generateProtectedMathFunctions value="TRUE"/>
+<generatePerformanceMeters value="FALSE"/>
+<generateObfuscatedCpp value="FALSE"/>
+<generateParInfoHTML value="TRUE"/>
+<generateMaxSignificantDigits value="FALSE"/>
+<noDatas>
+  <variable name="CC.A_th"/>
+  <variable name="Inj_F.A"/>
+  <variable name="Inj_O.A"/>
+  <variable name="Pipe_5.dp"/>
+  <variable name="Pump_LH2.A_in"/>
+  <variable name="Pump_LH2.r_m"/>
+  <variable name="Pump_LOX.A_in"/>
+  <variable name="Pump_LOX.r_m"/>
+  <variable name="Turbine.A_in"/>
+  <variable name="Turbine.r_m"/>
+</noDatas>
+<boundaries>
+  <variable name="CC.f_F.W"/>
+  <variable name="CC.f_O.p_c"/>
+  <variable name="LPRES.Altitude"/>
+  <variable name="Pipe_1.f_in.W"/>
+  <variable name="Pump_LH2.dp"/>
+  <variable name="Pump_LH2.phi"/>
+  <variable name="Pump_LOX.dp"/>
+  <variable name="Pump_LOX.phi"/>
+  <variable name="Tank_LH2.Tt"/>
+  <variable name="Tank_LH2.pt"/>
+  <variable name="Tank_LOX.Tt"/>
+  <variable name="Tank_LOX.pt"/>
+  <variable name="Turbine.M_2"/>
+  <variable name="Turbine.pi"/>
+  <variable name="Turbine.rpm"/>
+</boundaries>
+<algebraics>
+  <variable name="CC.M_r"/>
+  <variable name="Junct.f_in2.Tt"/>
+  <variable name="CC.p_out_ch"/>
+  <variable name="ThrustMonitor.M_out"/>
+  <variable name="Pump_LH2.U"/>
+  <variable name="Pump_LOX.U"/>
+  <variable name="Turbine.U"/>
+</algebraics>
+</partitionInfo>

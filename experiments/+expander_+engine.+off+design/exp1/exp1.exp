@@ -1,0 +1,48 @@
+ /*-----------------------------------------------------------------------------------------
+ LIBRARY: LPRES_EXAMPLES_2
+ COMPONENT: Expander_Engine
+ PARTITION: OffDesign
+ EXPERIMENT: exp1
+ TEMPLATE: STEADY
+ CREATION DATE: 27/02/2019
+-----------------------------------------------------------------------------------------*/
+
+EXPERIMENT exp1 ON Expander_Engine.OffDesign
+   DECLS
+   OBJECTS
+   INIT
+      -- initial values for algebraics
+      CombCha_1.phi = 1.6
+      CoolingJacket_1.h.T = 393.922832
+      Junction_1.f_in2.W = 45
+      Turbine_ch_2.f_in.pt = 3940320.49
+      Valve_1.M_th = 0.270092331
+      CombCha_1.p_out_ch = 8773.48935
+      ThrustMonitor_1.M_out = 4.14310116
+      Pump_1.U = 518.729443
+      Pump_2.U = 75.1981509
+
+
+   BOUNDS
+      -- Set equations for boundaries: boundVar = f(TIME;...)
+      LPRES.Altitude = 0
+      Valve_1.A = 0.00298440893
+      Valve_2.A = 1.61374306
+      Valve_3.A = 1.30855981
+
+
+   BODY
+      -- report results in file reportAll.rpt
+      REPORT_LIST("reportAll","*",TRUE)
+
+      DEBUG_LEVEL= 3      -- Range 0..4
+      -- Settings for different actions. Valid actions are: SEV_DISABLE, SEV_NONE, SEV_WARNING, SEV_ERROR, SEV_KILLPOINT and SEV_FATALL
+      --eSetErrorAction(ERR_BAD_OPER,SEV_KILLPOINT) -- Detect bad numerical operations (eg division by zero), default is SEV_NONE, recommended is SEV_KILLPOINT
+      --eSetErrorAction(ERR_NAN_INF, SEV_KILLPOINT) -- Detect NaN or Inf values, default is SEV_NONE, recommended is SEV_KILLPOINT
+      TOLTYPE= RELTOL -- convergence criteria
+      TOLERANCE = 1e-06 -- steady solver relative tolerance 
+		RESTORE_STATE("C:\PROOSIS_3.8.1\LPRES_devel\WORKSPACE\LPRES_EXAMPLES_2\experiments\+expander_+engine.+design\exp1\Design.xml")
+      -- Call the steady state function
+      STEADY()
+
+END EXPERIMENT

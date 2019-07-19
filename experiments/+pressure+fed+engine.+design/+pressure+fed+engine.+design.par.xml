@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<partitionInfo version="1.0" library="LPRES_EXAMPLES_2" component="PressureFedEngine" partition="Design">
+<noDerivatives value="FALSE"/>
+<inhibitReductionConstantCoefEqts value="FALSE"/>
+<generatePartitionClass value="FALSE"/>
+<removeNotUsedVars value="FALSE"/>
+<showPropertyPanel value="FALSE"/>
+<generateProtectedMathFunctions value="TRUE"/>
+<generatePerformanceMeters value="FALSE"/>
+<generateObfuscatedCpp value="FALSE"/>
+<generateParInfoHTML value="TRUE"/>
+<generateMaxSignificantDigits value="FALSE"/>
+<noDatas>
+  <variable name="CC.A_th"/>
+  <variable name="Injector_MMH.A"/>
+  <variable name="Injector_NTO.A"/>
+</noDatas>
+<boundaries>
+  <variable name="CC.f_O.p_c"/>
+  <variable name="CJ.l.W"/>
+  <variable name="FlowMeter_2.f_in.W"/>
+  <variable name="Tank_He.Tt"/>
+  <variable name="Tank_He.pt"/>
+  <variable name="ThrustMonitor.p_amb"/>
+</boundaries>
+<algebraics>
+  <variable name="CC.M_r"/>
+  <variable name="Tank_MMH.M_g"/>
+  <variable name="CJ.T_w_cold"/>
+  <variable name="CC.p_out_ch"/>
+  <variable name="ThrustMonitor.M_out"/>
+  <variable name="Tank_NTO.M_g"/>
+  <variable name="LPRES.Altitude"/>
+</algebraics>
+</partitionInfo>

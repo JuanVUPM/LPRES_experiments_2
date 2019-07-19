@@ -1,0 +1,74 @@
+ /*-----------------------------------------------------------------------------------------
+ LIBRARY: LPRES_EXAMPLES_2
+ COMPONENT: Turbojet_gg
+ PARTITION: Design
+ EXPERIMENT: exp1
+ TEMPLATE: STEADY
+ CREATION DATE: 19/02/2019
+-----------------------------------------------------------------------------------------*/
+
+EXPERIMENT exp1 ON Turbojet_gg.Design
+   DECLS
+   OBJECTS
+   INIT
+      -- initial values for algebraics
+      NewGasGen_1.W_F = 0.5
+      LPC.M_in = 0.001
+      HPC.M_in = 0.001
+		NewGasGen_1.f_F.p = 2229150
+   BOUNDS
+      -- Set equations for boundaries: boundVar = f(TIME;...)
+      Fuel.Tt = 288.15
+      Fuel.pt = 5100000
+      HPC.phi = 0.05
+      HPC.pi = 5.5
+      HPT.f_in.W = 25
+      HPT.rpm = 10000
+      T2t = 288.15
+      p2t = 102325
+      LPC.phi = 0.05
+      LPC.pi = 4
+      LPRES.Altitude = 0
+      LPT.rpm = 4000
+      NewGasGen_1.OF = 50
+      NewGasGen_1.f_O.p = 2229150
+
+   BODY
+      -- report results in file reportAll.rpt
+      REPORT_LIST("reportAll","*",TRUE)
+
+      DEBUG_LEVEL= 1      -- Range 0..4
+      -- Settings for different actions. Valid actions are: SEV_DISABLE, SEV_NONE, SEV_WARNING, SEV_ERROR, SEV_KILLPOINT and SEV_FATALL
+      --eSetErrorAction(ERR_BAD_OPER,SEV_KILLPOINT) -- Detect bad numerical operations (eg division by zero), default is SEV_NONE, recommended is SEV_KILLPOINT
+      --eSetErrorAction(ERR_NAN_INF, SEV_KILLPOINT) -- Detect NaN or Inf values, default is SEV_NONE, recommended is SEV_KILLPOINT
+      TOLTYPE= RELTOL -- convergence criteria
+      TOLERANCE = 1e-06 -- steady solver relative tolerance 
+
+      -- Call the steady state function
+      STEADY()
+
+		PRINT(" ")
+		PRINT("-----------------------------------------------------------------")
+		PRINT(" ")
+		PRINT("	RESULTS:")
+		PRINT(" ")
+		PRINT("	LPC average radius = $LPC.r_m")		
+		PRINT("	HPC average radius = $HPC.r_m")
+		PRINT("	LPC input area = $LPC.A_in")		
+		PRINT("	HPC input area = $HPC.A_in")
+		PRINT("	HPT input area = $HPT.A_in")
+		PRINT("	LPT input area = $LPT.A_in")
+		PRINT("	Nozzle discharge area = $Nozzle.A")
+		
+		PRINT("	Combustion temperature = $NewGasGen_1.T_c")
+		PRINT("	HPT pressure ratio = $pi_HPT")
+		PRINT("	LPT pressure ratio = $pi_LPT")
+		PRINT("	HPT temperature ratio = $HPT.alpha")
+		PRINT("	LPT temperature ratio = $LPT.alpha")
+		PRINT("	Nozzle outlet pressure = $Nozzle.p_out")		
+		PRINT("	Ambient pressure = $Nozzle.p_amb")
+		
+		PRINT("	Thrust = $Nozzle.Thrust")
+		PRINT(" ")
+		SAVE_STATE("Design.xml")
+END EXPERIMENT

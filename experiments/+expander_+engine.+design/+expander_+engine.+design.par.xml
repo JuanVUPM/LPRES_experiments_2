@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<partitionInfo version="1.0" library="LPRES_EXAMPLES_2" component="Expander_Engine" partition="Design">
+<noDerivatives value="FALSE"/>
+<inhibitReductionConstantCoefEqts value="FALSE"/>
+<generatePartitionClass value="FALSE"/>
+<removeNotUsedVars value="FALSE"/>
+<showPropertyPanel value="FALSE"/>
+<generateProtectedMathFunctions value="TRUE"/>
+<generatePerformanceMeters value="FALSE"/>
+<generateObfuscatedCpp value="FALSE"/>
+<generateParInfoHTML value="TRUE"/>
+<generateMaxSignificantDigits value="FALSE"/>
+<noDatas>
+  <variable name="CombCha_1.A_th"/>
+  <variable name="Injector_1.A"/>
+  <variable name="Injector_2.A"/>
+  <variable name="Pump_1.A_in"/>
+  <variable name="Pump_1.r_m"/>
+  <variable name="Pump_2.A_in"/>
+  <variable name="Pump_2.r_m"/>
+  <variable name="Turbine_ch_1.A_in"/>
+  <variable name="Turbine_ch_2.A_in"/>
+</noDatas>
+<boundaries>
+  <variable name="CombCha_1.f_F.W"/>
+  <variable name="CombCha_1.f_O.p_c"/>
+  <variable name="FlowMeter_2.f_in.W"/>
+  <variable name="Junction_1.f_in2.W"/>
+  <variable name="LPRES.Altitude"/>
+  <variable name="Pump_1.dp"/>
+  <variable name="Pump_1.phi"/>
+  <variable name="Pump_2.dp"/>
+  <variable name="Pump_2.phi"/>
+  <variable name="Shaft_1.rpm"/>
+  <variable name="Shaft_2.rpm"/>
+  <variable name="Valve_2.dp"/>
+  <variable name="Valve_3.dp"/>
+</boundaries>
+<algebraics>
+  <variable name="CombCha_1.M_r"/>
+  <variable name="Junction_1.f_in2.Tt"/>
+  <variable name="CombCha_1.p_out_ch"/>
+  <variable name="ThrustMonitor_1.M_out"/>
+  <variable name="Pump_1.U"/>
+  <variable name="Pump_2.U"/>
+  <variable name="Valve_1.M_th"/>
+  <variable name="Valve_2.A"/>
+  <variable name="Valve_3.A"/>
+</algebraics>
+</partitionInfo>

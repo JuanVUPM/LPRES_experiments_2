@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<partitionInfo version="1.0" library="LPRES_EXAMPLES_2" component="F1" partition="Design">
+<noDerivatives value="FALSE"/>
+<inhibitReductionConstantCoefEqts value="FALSE"/>
+<generatePartitionClass value="FALSE"/>
+<removeNotUsedVars value="FALSE"/>
+<showPropertyPanel value="FALSE"/>
+<generateProtectedMathFunctions value="TRUE"/>
+<generatePerformanceMeters value="FALSE"/>
+<generateObfuscatedCpp value="FALSE"/>
+<generateParInfoHTML value="TRUE"/>
+<generateMaxSignificantDigits value="FALSE"/>
+<noDatas>
+  <variable name="CC.A_th"/>
+  <variable name="Inj_F.A"/>
+  <variable name="Inj_O.A"/>
+  <variable name="New_Injector_1.A"/>
+  <variable name="New_Injector_2.A"/>
+  <variable name="Nozzle.A"/>
+  <variable name="Pump_F.A_in"/>
+  <variable name="Pump_F.r_m"/>
+  <variable name="Pump_O.A_in"/>
+  <variable name="Pump_O.r_m"/>
+  <variable name="Turbine_ch.A_in"/>
+</noDatas>
+<boundaries>
+  <variable name="CC.f_O.p_c"/>
+  <variable name="FlowMeter_F.f_in.W"/>
+  <variable name="FlowMeter_O.f_in.W"/>
+  <variable name="LPRES.Altitude"/>
+  <variable name="NewGasGen_1.OF"/>
+  <variable name="NewGasGen_1.f_O.p_c"/>
+  <variable name="Nozzle.g.W"/>
+  <variable name="Pump_F.dp"/>
+  <variable name="Pump_F.phi"/>
+  <variable name="Pump_O.dp"/>
+  <variable name="Pump_O.phi"/>
+  <variable name="Shaft.rpm"/>
+</boundaries>
+<algebraics>
+  <variable name="NewGasGen_1.W_F"/>
+  <variable name="ThrustMonitor.M_out"/>
+  <variable name="Pump_F.U"/>
+  <variable name="Pump_O.U"/>
+  <variable name="CC.p_out_ch"/>
+</algebraics>
+</partitionInfo>

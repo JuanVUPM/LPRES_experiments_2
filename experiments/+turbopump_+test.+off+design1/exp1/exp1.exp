@@ -1,0 +1,58 @@
+ /*-----------------------------------------------------------------------------------------
+ LIBRARY: LPRES_EXAMPLES_2
+ COMPONENT: Turbopump_Test
+ PARTITION: OffDesign1
+ EXPERIMENT: exp1
+ TEMPLATE: STEADY
+ CREATION DATE: 26/02/2019
+-----------------------------------------------------------------------------------------*/
+
+EXPERIMENT exp1 ON Turbopump_Test.OffDesign1
+   DECLS
+		REAL dp 				
+		REAL rpm				
+		REAL pi	
+   OBJECTS
+   INIT
+      -- initial values for algebraics
+      Pump.U = 0
+
+  	BOUNDS
+      -- Set equations for boundaries: boundVar = f(TIME;...)
+      Inlet_1.Tt = 80
+      Inlet_1.pt = 3e5
+      Inlet_2.Tt = 200
+      Inlet_2.pt = 20e5
+      LPRES.Altitude = 0
+      Pump.f_out.W = 100
+
+   BODY
+      -- report results in file reportAll.rpt
+      REPORT_LIST("reportAll","*",TRUE)
+
+      DEBUG_LEVEL= 1      -- Range 0..4
+      -- Settings for different actions. Valid actions are: SEV_DISABLE, SEV_NONE, SEV_WARNING, SEV_ERROR, SEV_KILLPOINT and SEV_FATALL
+      --eSetErrorAction(ERR_BAD_OPER,SEV_KILLPOINT) -- Detect bad numerical operations (eg division by zero), default is SEV_NONE, recommended is SEV_KILLPOINT
+      --eSetErrorAction(ERR_NAN_INF, SEV_KILLPOINT) -- Detect NaN or Inf values, default is SEV_NONE, recommended is SEV_KILLPOINT
+      TOLTYPE= RELTOL -- convergence criteria
+      TOLERANCE = 1e-06 -- steady solver relative tolerance 
+		RESTORE_STATE("C:\PROOSIS_3.8.1\LPRES_devel\WORKSPACE\LPRES_EXAMPLES_2\experiments\+turbopump_+test.+design\exp1\Design.xml")
+      -- Call the steady state function
+      
+		
+		dp = Pump.f_out.pt - Pump.f_in.pt
+		rpm = Pump.m.N * 60 / 2 / PI
+		pi = Turbine_ch.f_in.pt / Turbine_ch.f_out.pt
+		STEADY()
+		PRINT(" ")
+		PRINT("-----------------------------------------------------------------")
+		PRINT(" ")
+		PRINT("	RESULTS:")
+		PRINT(" ")		
+		PRINT("	Pump pressure increase = $dp")
+		PRINT("	Rotational speed (rpm) = $rpm")
+		PRINT("	Turbine expansion ratio = $pi")
+		PRINT("	Mass flow through the turbine = $Turbine_ch.f_in.W")
+		PRINT(" ")
+
+END EXPERIMENT

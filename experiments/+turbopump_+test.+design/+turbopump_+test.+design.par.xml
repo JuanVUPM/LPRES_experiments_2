@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<partitionInfo version="1.0" library="LPRES_EXAMPLES_2" component="Turbopump_Test" partition="Design">
+<noDerivatives value="FALSE"/>
+<inhibitReductionConstantCoefEqts value="FALSE"/>
+<generatePartitionClass value="FALSE"/>
+<removeNotUsedVars value="FALSE"/>
+<showPropertyPanel value="FALSE"/>
+<generateProtectedMathFunctions value="TRUE"/>
+<generatePerformanceMeters value="FALSE"/>
+<generateObfuscatedCpp value="FALSE"/>
+<generateParInfoHTML value="TRUE"/>
+<generateMaxSignificantDigits value="FALSE"/>
+<noDatas>
+  <variable name="Nozzle.A"/>
+  <variable name="Pump.A_in"/>
+  <variable name="Pump.r_m"/>
+  <variable name="Turbine_ch.A_in"/>
+</noDatas>
+<boundaries>
+  <variable name="Inlet_1.Tt"/>
+  <variable name="Inlet_1.pt"/>
+  <variable name="Inlet_2.Tt"/>
+  <variable name="Inlet_2.pt"/>
+  <variable name="LPRES.Altitude"/>
+  <variable name="Pump.dp"/>
+  <variable name="Pump.f_out.W"/>
+  <variable name="Pump.phi"/>
+  <variable name="Shaft.rpm"/>
+  <variable name="Turbine_ch.pi"/>
+</boundaries>
+<algebraics>
+  <variable name="Pump.U"/>
+</algebraics>
+</partitionInfo>

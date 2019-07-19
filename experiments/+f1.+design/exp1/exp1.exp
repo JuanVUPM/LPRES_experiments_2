@@ -1,0 +1,74 @@
+ /*-----------------------------------------------------------------------------------------
+ LIBRARY: LPRES_EXAMPLES_2
+ COMPONENT: F1
+ PARTITION: Design
+ EXPERIMENT: exp1
+ TEMPLATE: STEADY
+ CREATION DATE: 20/02/2019
+-----------------------------------------------------------------------------------------*/
+
+EXPERIMENT exp1 ON F1.Design
+   DECLS
+   OBJECTS
+   INIT
+      -- initial values for algebraics
+      NewGasGen_1.W_F = 65.3474576
+      CC.p_out_ch = 100
+      ThrustMonitor.M_out = 3
+
+   BOUNDS
+      -- Set equations for boundaries: boundVar = f(TIME;...)
+      CC.f_O.p_c = 68e5
+      FlowMeter_F.f_in.W = 788
+      FlowMeter_O.f_in.W = 1789
+      LPRES.Altitude = 40000
+      NewGasGen_1.OF = 0.18
+      NewGasGen_1.f_O.p_c = 8801195.99
+      Nozzle.g.W = 77.11
+      Pump_F.dp = 131e5
+      Pump_F.phi = 0.0428
+      Pump_O.dp = 89e5
+      Pump_O.phi = 0.0428
+      Shaft.rpm = 5550
+
+   BODY
+      -- report results in file reportAll.rpt
+      REPORT_LIST("reportAll","*",TRUE)
+
+      DEBUG_LEVEL= 1      -- Range 0..4
+      -- Settings for different actions. Valid actions are: SEV_DISABLE, SEV_NONE, SEV_WARNING, SEV_ERROR, SEV_KILLPOINT and SEV_FATALL
+      --eSetErrorAction(ERR_BAD_OPER,SEV_KILLPOINT) -- Detect bad numerical operations (eg division by zero), default is SEV_NONE, recommended is SEV_KILLPOINT
+      --eSetErrorAction(ERR_NAN_INF, SEV_KILLPOINT) -- Detect NaN or Inf values, default is SEV_NONE, recommended is SEV_KILLPOINT
+      TOLTYPE= RELTOL -- convergence criteria
+      TOLERANCE = 1e-06 -- steady solver relative tolerance 
+
+      -- Call the steady state function
+      STEADY()
+		SAVE_STATE("Design.xml")
+		PRINT(" ")
+		PRINT("-----------------------------------------------------------------")
+		PRINT(" ")
+		PRINT("	RESULTS:")
+		PRINT(" ")
+		PRINT("	Oxidizer pump input area = $Pump_O.A_in")		
+		PRINT("	Fuel Pump input area = $Pump_F.A_in")
+		PRINT("	Oxidizer pump average radius = $Pump_O.r_m")		
+		PRINT("	Fuel Pump average radius = $Pump_F.r_m")
+		PRINT("	Turbine input area = $Turbine_ch.A_in")
+		PRINT("	Turbine discharge area = $Nozzle.A")		
+		PRINT("	Oxidizer injector area = $Inj_O.A")	
+		PRINT("	Fuel injector area = $Inj_F.A")	
+		PRINT("	Throat area = $CC.A_th")
+		
+		PRINT("	Combustion temperature in the combustion chamber = $CC.T_c")
+		PRINT("	Combustion temperature in the gas generator = $NewGasGen_1.g.Tt")
+		
+		PRINT("	Thrust = $ControlPanel.Thrust")
+		PRINT("	Isp_0 = $ControlPanel.Isp_0")
+		PRINT("	C_E = $ControlPanel.C_E")		
+		PRINT("	c* = $ControlPanel.c_star")
+		PRINT(" ")
+
+		
+		
+END EXPERIMENT

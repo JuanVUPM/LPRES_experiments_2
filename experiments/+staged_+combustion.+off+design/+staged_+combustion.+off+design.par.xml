@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<partitionInfo version="1.0" library="LPRES_EXAMPLES_2" component="Staged_Combustion" partition="OffDesign">
+<noDerivatives value="FALSE"/>
+<inhibitReductionConstantCoefEqts value="FALSE"/>
+<generatePartitionClass value="FALSE"/>
+<removeNotUsedVars value="FALSE"/>
+<showPropertyPanel value="FALSE"/>
+<generateProtectedMathFunctions value="TRUE"/>
+<generatePerformanceMeters value="FALSE"/>
+<generateObfuscatedCpp value="FALSE"/>
+<generateParInfoHTML value="TRUE"/>
+<generateMaxSignificantDigits value="FALSE"/>
+<boundaries>
+  <variable name="Inlet_1.Tt"/>
+  <variable name="Inlet_1.pt"/>
+  <variable name="Inlet_2.Tt"/>
+  <variable name="Inlet_2.pt"/>
+  <variable name="Inlet_3.Tt"/>
+  <variable name="Inlet_3.pt"/>
+  <variable name="LPRES.Altitude"/>
+</boundaries>
+<algebraics>
+  <variable name="CC.W_F"/>
+  <variable name="GasGen_1.W_F"/>
+  <variable name="CC.p_out_ch"/>
+  <variable name="ThrustMonitor_1.M_out"/>
+</algebraics>
+</partitionInfo>

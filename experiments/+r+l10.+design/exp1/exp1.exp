@@ -1,0 +1,129 @@
+ /*-----------------------------------------------------------------------------------------
+ LIBRARY: LPRES_EXAMPLES_2
+ COMPONENT: RL10
+ PARTITION: Design
+ EXPERIMENT: exp1
+ TEMPLATE: STEADY
+ CREATION DATE: 21/02/2019
+-----------------------------------------------------------------------------------------*/
+
+EXPERIMENT exp1 ON RL10.Design
+   DECLS
+		REAL M_comb	
+		REAL cp_comb
+   OBJECTS
+   INIT
+      -- initial values for algebraics
+      Junct.f_in2.Tt = 1
+      CC.p_out_ch = 100
+      ThrustMonitor.M_out = 10
+
+   BOUNDS
+      -- Set equations for boundaries: boundVar = f(TIME;...)
+      CC.f_F.W = 2.70069069
+      CC.f_O.p_c = 3275010
+      LPRES.Altitude = 9000
+      Pipe_1.f_in.W = 16.3526821
+      Pump_LH2.dp = 7358000
+      Pump_LH2.phi = 0.0656
+      Pump_LOX.dp = 4282000
+      Pump_LOX.phi = 0.03027
+      Tank_LH2.Tt = 21.1111
+      Tank_LH2.pt = 1.930532e5
+      Tank_LOX.Tt = 98.05556
+      Tank_LOX.pt = 3.206062e5
+      Turbine.M_2 = 0.5
+      Turbine.pi = 1.8
+      Turbine.rpm = 38172.635
+
+   BODY
+      -- report results in file reportAll.rpt
+      REPORT_LIST("reportAll","*",TRUE)
+
+      DEBUG_LEVEL= 1      -- Range 0..4
+      -- Settings for different actions. Valid actions are: SEV_DISABLE, SEV_NONE, SEV_WARNING, SEV_ERROR, SEV_KILLPOINT and SEV_FATALL
+      --eSetErrorAction(ERR_BAD_OPER,SEV_KILLPOINT) -- Detect bad numerical operations (eg division by zero), default is SEV_NONE, recommended is SEV_KILLPOINT
+      --eSetErrorAction(ERR_NAN_INF, SEV_KILLPOINT) -- Detect NaN or Inf values, default is SEV_NONE, recommended is SEV_KILLPOINT
+      TOLTYPE= RELTOL -- convergence criteria
+      TOLERANCE = 1e-06 -- steady solver relative tolerance 
+
+      -- Call the steady state function
+      STEADY()
+	
+
+		PRINT(" ")
+		PRINT("-----------------------------------------------------------------")
+		PRINT(" ")
+		PRINT("	RESULTS (Turbine.M = 0.5):")
+		PRINT(" ")		
+		PRINT("	LOX pump average radius = $Pump_LOX.r_m")		
+		PRINT("	LH2 pump average radius = $Pump_LH2.r_m")	
+		PRINT("	LOX pump input area = $Pump_LOX.A_in")		
+		PRINT("	LH2 pump input area = $Pump_LH2.A_in")	
+		
+		PRINT("	Cooling jacket outlet total temperature = $CJ.g.Tt")
+		PRINT("	Cooling jacket outlet total pressure = $CJ.g.pt")				
+		PRINT("	Cooling liquid speed = $CJ.v")	
+			
+		PRINT("	Turbine mass flow = $Turbine.f_in.W")			
+		PRINT("	Turbine input area = $Turbine.A_in")	
+		PRINT("	Turbine average radius = $Turbine.r_m")			
+		
+		PRINT("	LOX injector area = $Inj_O.A")	
+		PRINT("	LH2 injector area = $Inj_F.A")
+		
+		PRINT("	Throat area = $CC.A_th")	
+		PRINT("	Combustion temperature = $CC.T_c")
+		
+		M_comb = M(CC.g.fluid)
+		cp_comb = cp(CC.g.fluid)
+		
+		PRINT("	Combustion products molar mass (g/mol) = $M_comb")	
+		PRINT("	Combustion products specific heat at constant pressure (J/(kg·K)) = $cp_comb")
+		
+		PRINT("	Thrust = $ControlPanel.Thrust")
+		PRINT("	Isp_0 = $ControlPanel.Isp_0")
+		PRINT("	C_E = $ControlPanel.C_E")		
+		PRINT("	c* = $ControlPanel.c_star")
+		PRINT(" ")		
+	
+		Turbine.M_2 = 1
+      STEADY()
+		
+		PRINT(" ")
+		PRINT("-----------------------------------------------------------------")
+		PRINT(" ")
+		PRINT("	RESULTS (Turbine.M_2 = 1):")
+		PRINT(" ")		
+		PRINT("	LOX pump average radius = $Pump_LOX.r_m")		
+		PRINT("	LH2 pump average radius = $Pump_LH2.r_m")	
+		PRINT("	LOX pump input area = $Pump_LOX.A_in")		
+		PRINT("	LH2 pump input area = $Pump_LH2.A_in")	
+		
+		PRINT("	Cooling jacket outlet total temperature = $CJ.g.Tt")
+		PRINT("	Cooling jacket outlet total pressure = $CJ.g.pt")				
+		PRINT("	Cooling liquid speed = $CJ.v")	
+			
+		PRINT("	Turbine mass flow = $Turbine.f_in.W")			
+		PRINT("	Turbine input area = $Turbine.A_in")	
+		PRINT("	Turbine average radius = $Turbine.r_m")			
+		
+		PRINT("	LOX injector area = $Inj_O.A")	
+		PRINT("	LH2 injector area = $Inj_F.A")
+		
+		PRINT("	Throat area = $CC.A_th")	
+		PRINT("	Combustion temperature = $CC.T_c")
+		
+		M_comb = M(CC.g.fluid)
+		cp_comb = cp(CC.g.fluid)
+		
+		PRINT("	Combustion products molar mass (g/mol) = $M_comb")	
+		PRINT("	Combustion products specific heat at constant pressure (J/(kg·K)) = $cp_comb")
+		
+		PRINT("	Thrust = $ControlPanel.Thrust")
+		PRINT("	Isp_0 = $ControlPanel.Isp_0")
+		PRINT("	C_E = $ControlPanel.C_E")		
+		PRINT("	c* = $ControlPanel.c_star")
+		PRINT(" ")
+		SAVE_STATE("Design.xml")
+END EXPERIMENT

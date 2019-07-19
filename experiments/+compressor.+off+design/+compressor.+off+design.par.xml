@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<partitionInfo version="1.0" library="LPRES_EXAMPLES_2" component="Compressor" partition="OffDesign">
+<noDerivatives value="FALSE"/>
+<inhibitReductionConstantCoefEqts value="FALSE"/>
+<generatePartitionClass value="FALSE"/>
+<removeNotUsedVars value="FALSE"/>
+<showPropertyPanel value="FALSE"/>
+<generateProtectedMathFunctions value="TRUE"/>
+<generatePerformanceMeters value="FALSE"/>
+<generateObfuscatedCpp value="FALSE"/>
+<generateParInfoHTML value="TRUE"/>
+<generateMaxSignificantDigits value="FALSE"/>
+<boundaries>
+  <variable name="Compressor.f_out.W"/>
+  <variable name="Compressor.m.N"/>
+  <variable name="Inlet.Tt"/>
+  <variable name="Inlet.pt"/>
+</boundaries>
+<algebraics>
+  <variable name="Compressor.M_in"/>
+</algebraics>
+</partitionInfo>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<partitionInfo version="1.0" library="LPRES_EXAMPLES_2" component="F1" partition="OffDesign">
+<noDerivatives value="FALSE"/>
+<inhibitReductionConstantCoefEqts value="FALSE"/>
+<generatePartitionClass value="FALSE"/>
+<removeNotUsedVars value="FALSE"/>
+<showPropertyPanel value="FALSE"/>
+<generateProtectedMathFunctions value="TRUE"/>
+<generatePerformanceMeters value="FALSE"/>
+<generateObfuscatedCpp value="FALSE"/>
+<generateParInfoHTML value="TRUE"/>
+<generateMaxSignificantDigits value="FALSE"/>
+<boundaries>
+  <variable name="LPRES.Altitude"/>
+</boundaries>
+<algebraics>
+  <variable name="CC.W_F"/>
+  <variable name="CC.phi"/>
+  <variable name="NewGasGen_1.W_F"/>
+  <variable name="Pump_F.U"/>
+  <variable name="ThrustMonitor.M_out"/>
+  <variable name="CC.p_out_ch"/>
+</algebraics>
+</partitionInfo>

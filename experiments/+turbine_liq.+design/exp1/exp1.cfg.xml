@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<experiment version="1.4.0">
+	<experimentViews>
+		<tab name="Tab_1">
+				</tab>
+	</experimentViews>
+	<watch width="786" height="192" visible="true" pos="right" >
+		<currentTab name="view"/>
+		<variables>
+			<tab name="initial"> 
+			</tab> 
+			<tab name="inputs"> 
+			</tab> 
+			<tab name="view"> 
+				<var name="Ambient.A"/>
+				<var name="Inlet_1.f.pt"/>
+				<var name="Inlet_1.Tt"/>
+				<var name="Inlet_1.W"/>
+				<var name="Inlet_2.f.pt"/>
+				<var name="Inlet_2.Tt"/>
+				<var name="Pump.A_in"/>
+				<var name="Pump.dp"/>
+				<var name="Pump.r_m"/>
+				<var name="Shaft.rpm"/>
+				<var name="Turbine_liq.A_in"/>
+				<var name="Turbine_liq.f_in.pt"/>
+				<var name="Turbine_liq.f_out.pt"/>
+				<var name="Turbine_liq.Power"/>
+				<var name="Turbine_liq.r_m"/>
+				<var name="Inlet_2.W"/>
+			</tab> 
+		</variables>
+		<layout>
+			<tab name="initial"> 
+				<column name="name" width="100"/> 
+				<column name="value" width="100"/> 
+				<column name="units" width="100"/> 
+				<column name="category" width="100"/> 
+				<column name="type" width="100"/> 
+			</tab> 
+			<tab name="inputs"> 
+				<column name="name" width="100"/> 
+				<column name="value" width="100"/> 
+				<column name="units" width="100"/> 
+				<column name="category" width="100"/> 
+			</tab> 
+			<tab name="view"> 
+				<column name="name" width="171"/> 
+				<column name="value" width="100"/> 
+				<column name="units" width="100"/> 
+				<column name="category" width="100"/> 
+			</tab> 
+		</layout>
+	</watch>
+	<outputWindow height="192" width="958" visible="true" pos="bottom" />
+	<alarms globalEnabled="TRUE">
+	</alarms>
+
+	<mainWindow  mode="normal" height="1008" width="958" posX="961" posY="31" currentTab="Tab_1" />
+</experiment>

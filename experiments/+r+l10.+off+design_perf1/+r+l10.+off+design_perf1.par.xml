@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<partitionInfo version="1.0" library="LPRES_EXAMPLES_2" component="RL10" partition="OffDesign_perf1">
+<noDerivatives value="FALSE"/>
+<inhibitReductionConstantCoefEqts value="FALSE"/>
+<generatePartitionClass value="FALSE"/>
+<removeNotUsedVars value="FALSE"/>
+<showPropertyPanel value="FALSE"/>
+<generateProtectedMathFunctions value="TRUE"/>
+<generatePerformanceMeters value="FALSE"/>
+<generateObfuscatedCpp value="FALSE"/>
+<generateParInfoHTML value="TRUE"/>
+<generateMaxSignificantDigits value="FALSE"/>
+<noDatas>
+  <variable name="Pipe_5.dp"/>
+</noDatas>
+<boundaries>
+  <variable name="LPRES.Altitude"/>
+  <variable name="Pipe_5.dp"/>
+  <variable name="Tank_LH2.Tt"/>
+  <variable name="Tank_LH2.pt"/>
+  <variable name="Tank_LOX.Tt"/>
+  <variable name="Tank_LOX.pt"/>
+</boundaries>
+<algebraics>
+  <variable name="CC.M_r"/>
+  <variable name="CC.W_F"/>
+  <variable name="CC.phi"/>
+  <variable name="Junct.f_in2.Tt"/>
+  <variable name="Pump_LH2.U"/>
+  <variable name="Turbine.M_2"/>
+  <variable name="CC.p_out_ch"/>
+  <variable name="ThrustMonitor.M_out"/>
+</algebraics>
+</partitionInfo>

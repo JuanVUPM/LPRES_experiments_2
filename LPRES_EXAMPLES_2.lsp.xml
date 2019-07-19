@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<library version="1.1.1">
+ <filedeps>
+  <file name="version.el"/>
+  <file name="Turbopump_Test.eds"/>
+  <file name="Turbine_performance.eds"/>
+  <file name="Compressor.eds"/>
+  <file name="Turbine_liq.eds"/>
+  <file name="Turbojet_design.eds"/>
+  <file name="Turbojet_gg.eds"/>
+  <file name="F1.eds"/>
+  <file name="RL10.eds"/>
+  <file name="PressureFedEngine.eds"/>
+  <file name="Staged_Combustion.eds"/>
+  <file name="Expander_Engine.eds"/>
+  <file name="Expander_engine2.eds"/>
+ </filedeps>
+ <libdeps>
+  <lib name="LPRES" version=""/>
+  <lib name="MATH" version=""/>
+ </libdeps>
+ <otherdeps>
+ </otherdeps>
+</library>

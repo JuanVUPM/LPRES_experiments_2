@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<partitionInfo version="1.0" library="LPRES_EXAMPLES_2" component="Expander_Engine" partition="OffDesign">
+<noDerivatives value="FALSE"/>
+<inhibitReductionConstantCoefEqts value="FALSE"/>
+<generatePartitionClass value="FALSE"/>
+<removeNotUsedVars value="FALSE"/>
+<showPropertyPanel value="FALSE"/>
+<generateProtectedMathFunctions value="TRUE"/>
+<generatePerformanceMeters value="FALSE"/>
+<generateObfuscatedCpp value="FALSE"/>
+<generateParInfoHTML value="TRUE"/>
+<generateMaxSignificantDigits value="FALSE"/>
+<boundaries>
+  <variable name="LPRES.Altitude"/>
+  <variable name="Valve_1.A"/>
+  <variable name="Valve_2.dp"/>
+  <variable name="Valve_3.dp"/>
+</boundaries>
+<algebraics>
+  <variable name="CombCha_1.M_r"/>
+  <variable name="CombCha_1.phi"/>
+  <variable name="CoolingJacket_1.h.T"/>
+  <variable name="Junction_1.f_in2.W"/>
+  <variable name="Turbine_ch_2.f_in.pt"/>
+  <variable name="Valve_1.M_th"/>
+  <variable name="CombCha_1.p_out_ch"/>
+  <variable name="ThrustMonitor_1.M_out"/>
+  <variable name="Pump_1.U"/>
+  <variable name="Pump_2.U"/>
+  <variable name="Valve_2.A"/>
+  <variable name="Valve_3.A"/>
+</algebraics>
+</partitionInfo>

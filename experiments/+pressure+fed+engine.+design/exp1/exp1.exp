@@ -1,0 +1,46 @@
+ /*-----------------------------------------------------------------------------------------
+ LIBRARY: LPRES_EXAMPLES_2
+ COMPONENT: PressureFedEngine
+ PARTITION: Design
+ EXPERIMENT: exp1
+ TEMPLATE: STEADY
+ CREATION DATE: 26/02/2019
+-----------------------------------------------------------------------------------------*/
+
+EXPERIMENT exp1 ON PressureFedEngine.Design
+   DECLS
+   OBJECTS
+   INIT
+      -- initial values for algebraics
+      Tank_NTO.M_g = 0.1
+      Tank_MMH.M_g = 0.1
+      CC.p_out_ch = 100
+      ThrustMonitor.M_out = 100
+      LPRES.Altitude = 0
+
+   BOUNDS
+      -- Set equations for boundaries: boundVar = f(TIME;...)
+      CC.f_O.p_c = 1649310.36
+      CJ.l.W = 6.11989145
+      FlowMeter_2.f_in.W = 10.7759268
+      Tank_He.Tt = 275
+      Tank_He.pt = 20000000
+      ThrustMonitor.p_amb = 300
+
+   BODY
+      -- report results in file reportAll.rpt
+      REPORT_LIST("reportAll","*",TRUE)
+
+      DEBUG_LEVEL= 1      -- Range 0..4
+      -- Settings for different actions. Valid actions are: SEV_DISABLE, SEV_NONE, SEV_WARNING, SEV_ERROR, SEV_KILLPOINT and SEV_FATALL
+      --eSetErrorAction(ERR_BAD_OPER,SEV_KILLPOINT) -- Detect bad numerical operations (eg division by zero), default is SEV_NONE, recommended is SEV_KILLPOINT
+      --eSetErrorAction(ERR_NAN_INF, SEV_KILLPOINT) -- Detect NaN or Inf values, default is SEV_NONE, recommended is SEV_KILLPOINT
+      TOLTYPE= RELTOL -- convergence criteria
+      TOLERANCE = 1e-06 -- steady solver relative tolerance 
+
+      -- Call the steady state function
+      STEADY()
+		
+		SAVE_STATE("Design.xml")
+
+END EXPERIMENT

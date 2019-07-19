@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<partitionInfo version="1.0" library="LPRES_EXAMPLES_2" component="Turbojet_gg" partition="Design">
+<noDerivatives value="FALSE"/>
+<inhibitReductionConstantCoefEqts value="FALSE"/>
+<generatePartitionClass value="FALSE"/>
+<removeNotUsedVars value="FALSE"/>
+<showPropertyPanel value="FALSE"/>
+<generateProtectedMathFunctions value="TRUE"/>
+<generatePerformanceMeters value="FALSE"/>
+<generateObfuscatedCpp value="FALSE"/>
+<generateParInfoHTML value="TRUE"/>
+<generateMaxSignificantDigits value="FALSE"/>
+<noDatas>
+  <variable name="Air_injector.A"/>
+  <variable name="Fuel_Injector.A"/>
+  <variable name="HPC.A_in"/>
+  <variable name="HPC.r_m"/>
+  <variable name="HPT.A_in"/>
+  <variable name="LPC.A_in"/>
+  <variable name="LPC.r_m"/>
+  <variable name="LPT.A_in"/>
+  <variable name="Nozzle.A"/>
+</noDatas>
+<boundaries>
+  <variable name="Fuel.Tt"/>
+  <variable name="Fuel.pt"/>
+  <variable name="HPC.phi"/>
+  <variable name="HPC.pi"/>
+  <variable name="HPT.f_in.W"/>
+  <variable name="HPT.rpm"/>
+  <variable name="Inlet.Tt"/>
+  <variable name="Inlet.pt"/>
+  <variable name="LPC.phi"/>
+  <variable name="LPC.pi"/>
+  <variable name="LPRES.Altitude"/>
+  <variable name="LPT.rpm"/>
+  <variable name="NewGasGen_1.OF"/>
+  <variable name="NewGasGen_1.f_O.p"/>
+</boundaries>
+<algebraics>
+  <variable name="NewGasGen_1.W_F"/>
+  <variable name="LPC.U"/>
+  <variable name="LPC.M_in"/>
+  <variable name="HPC.U"/>
+  <variable name="HPC.M_in"/>
+  <variable name="NewGasGen_1.f_F.p"/>
+</algebraics>
+</partitionInfo>
